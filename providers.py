@@ -5,24 +5,17 @@ PROVIDERS = {
         "mms": "myboostmobile.com",
         "mms_support": True,
     },
-    "C-Spire": {"sms": "cspire1.com", "mms_support": False},
     "Cricket Wireless": {
         "sms": "sms.cricketwireless.net ",
         "mms": "mms.cricketwireless.net",
         "mms_support": True,
     },
-    "Consumer Cellular": {"sms": "mailmymobile.net", "mms_support": False},
     "Google Project Fi": {"sms": "msg.fi.google.com", "mms_support": True},
     "Metro PCS": {"sms": "mymetropcs.com", "mms_support": True},
-    "Mint Mobile": {"sms": "mailmymobile.net", "mms_support": False},
     "Page Plus": {
         "sms": "vtext.com",
         "mms": "mypixmessages.com",
         "mms_support": True,
-    },
-    "Republic Wireless": {
-        "sms": "text.republicwireless.com",
-        "mms_support": False,
     },
     "Sprint": {
         "sms": "messaging.sprintpcs.com",
@@ -35,7 +28,6 @@ PROVIDERS = {
         "mms_support": True,
     },
     "T-Mobile": {"sms": "tmomail.net", "mms_support": True},
-    "Ting": {"sms": "message.ting.com", "mms_support": False},
     "Tracfone": {"sms": "", "mms": "mmst5.tracfone.com", "mms_support": True},
     "U.S. Cellular": {
         "sms": "email.uscc.net",

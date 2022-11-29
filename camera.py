@@ -20,8 +20,18 @@ from dotenv import load_dotenv
 # Person detection function created by Tech with Tim (https://www.youtube.com/watch?v=Exic9E5rNok)
 
 
-def detect_person(SECONDS_TILL_STOP: int = 10, frame_num: int = 20):
-    cap = cv2.VideoCapture(0)
+def detect_person(
+    SECONDS_TILL_STOP: int = 10,
+    frame_num: int = 20,
+    face_accuracy: float = 1.1,
+    body_accuracy: float = 1.1,
+    face_neighbors: int = 5,
+    body_neighbors: int = 5,
+    show_camera: bool = True,
+    camera_name: int = 0,
+    frame_size: tuple = (640, 480)
+):
+    cap = cv2.VideoCapture(camera_name)
 
     face_cascade = cv2.CascadeClassifier(
         os.path.join(cv2.data.haarcascades, "haarcascade_frontalface_default.xml"))
@@ -31,10 +41,10 @@ def detect_person(SECONDS_TILL_STOP: int = 10, frame_num: int = 20):
     detection: bool = False
     detection_stopped_time: bool = None
     timer_started: bool = False
+
     frame_count: int = 0
     frame_time = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
 
-    frame_size: tuple = (int(cap.get(3)), int(cap.get(4)))
     fourCC = cv2.VideoWriter_fourcc(*"mp4v")
 
     while True:
@@ -45,8 +55,10 @@ def detect_person(SECONDS_TILL_STOP: int = 10, frame_num: int = 20):
             cv2.imwrite(f"./{frame_time}.jpg", frame)
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        faces = face_cascade.detectMultiScale(gray, 1.1, 5)
-        bodies = body_cascade.detectMultiScale(gray, 1.1, 5)
+        faces = face_cascade.detectMultiScale(
+            gray, face_accuracy, face_neighbors)
+        bodies = body_cascade.detectMultiScale(
+            gray, body_accuracy, body_neighbors)
 
         if len(faces) + len(bodies) > 0:
             if detection:
@@ -93,7 +105,8 @@ def detect_person(SECONDS_TILL_STOP: int = 10, frame_num: int = 20):
             cv2.rectangle(frame, (x, y), (x + width,
                           y + height), (0, 0, 255), 3)
 
-        cv2.imshow("Camera", frame)
+        if show_camera:
+            cv2.imshow("Camera", frame)
 
         frame_count += 1
 

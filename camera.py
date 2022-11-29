@@ -19,10 +19,6 @@ from dotenv import load_dotenv
 from providers import PROVIDERS
 
 
-# Person detection function created by Tech with Tim
-# (https://www.youtube.com/watch?v=Exic9E5rNok)
-
-
 def detect_person(
     SECONDS_TILL_STOP: int = 10,
     frame_num: int = 20,
@@ -136,9 +132,6 @@ def detect_person(
     out.release()
     cap.release()
     cv2.destroyAllWindows()
-
-# Message sending function created by Alfredo Sequeida
-# (https://www.youtube.com/watch?v=4-ysecoraKo)
 
 
 def send_recording(

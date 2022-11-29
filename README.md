@@ -2,6 +2,10 @@
 
 This is a small python script that enables record from your camera and detect a person. Then send a notification about said recording to your phone.
 
+### Credits
+
+The majority of this code is from [Tech with Tim](https://www.youtube.com/watch?v=Exic9E5rNok) and [Alfredo Sequeida](https://www.youtube.com/watch?v=4-ysecoraKo). The camera detection is from Tech with Tim and the message sending is from Alfredo Sequeida.
+
 ### Set up:
 
 - config.env file
